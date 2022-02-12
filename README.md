@@ -1,1 +1,3 @@
-# firstPractice { PingPong Game }
+# Practice Project: PingPong Game
+
+## Made By > Mohand Zaid
