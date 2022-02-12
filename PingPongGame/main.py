@@ -6,7 +6,8 @@ import turtle
 
 WIN=turtle.Screen() #initialize screen
 WIN.title("Ping Pong") #set the title of the window
-WIN.bgpic("BACKGROUND.png") #set the background to a picture
+WIN.bgcolor("black") #set the background to a color
+# WIN.bgpic("background.png") #set the background to a picture
 WIN.setup(width=800,height=600) #set width and hight of window
 WIN.tracer(0) #stop automatic updating of window screen
 
