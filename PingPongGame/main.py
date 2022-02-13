@@ -1,8 +1,48 @@
 ####initialization
 
 # import turtle module which is responsible of GUI drawing
-from tkinter.tix import Tree
+# from tkinter.tix import Tree
+
 import turtle
+
+class Base_PingPong_Elements:
+    def __init__(self, title, element_width, element_height, auto_update=0,background="black"):
+        self.title=title
+        self.background=background
+        self.element_width=element_width
+        self.element_length=element_height
+        self.autoupdate=auto_update
+
+        self=turtle.Screen()
+        self.title(title)
+        self.bgcolor(background)
+        self.setup(width=element_width, height=element_height)
+        self.tracer(auto_update)
+
+
+class PingPong_Elements(Base_PingPong_Elements):
+    def __init__(self, name, element_width, element_length, render_speed=0, element_shape="square", element_color="orange", init_position=(0,0),element_steps=20):
+        
+        self.name=name
+        self.element_width=element_width
+        self.length=element_length
+        self.render_speed=render_speed
+        self.element_shape=element_shape
+        self.element_color=element_color
+        self.init_position=init_position
+        self.element_steps=element_steps
+
+        self=turtle.Turtle()
+        self.speed(render_speed)
+        self.shape(element_shape) #set the shape of the object
+        self.color(element_color) #set the color of the object
+        self.shapesize(stretch_wid=element_width,stretch_len=element_length) #stretch the shape size (default: wid=20pi*1 , len=20pi*1)
+        self.penup() #stop object of drawing lines
+        self.goto(init_position) #set the position of the object
+
+
+        
+
 
 WIN=turtle.Screen() #initialize screen
 WIN.title("Ping Pong") #set the title of the window
@@ -14,6 +54,9 @@ WIN.tracer(0) #stop automatic updating of window screen
 racket_width=4
 racket_len=0.5
 # racket1 object
+racket11=PingPong_Elements("player 1", 4, 0.5, 0, "square", "orange", (-380,0))
+racket22=PingPong_Elements("player 2", 4, 0.5, 0, "square", "orange", (380,0))
+
 racket1=turtle.Turtle() #initialize turtle object (racket1)
 racket1.speed(0) #set the refresh speed of the object
 racket1.shape("square") #set the shape of the object
@@ -21,6 +64,7 @@ racket1.color("orange") #set the color of the object
 racket1.shapesize(stretch_wid=racket_width,stretch_len=racket_len) #stretch the shape size (default: wid=20pi*1 , len=20pi*1)
 racket1.penup() #stop object of drawing lines
 racket1.goto(-380,0) #set the position of the object
+
 
 # racket2 object
 racket2=turtle.Turtle()
