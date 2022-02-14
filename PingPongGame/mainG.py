@@ -8,7 +8,7 @@ import turtle
 from Pingpong_Elements import Base_PingPong_Elements, PingPong_Ball, PingPong_Elements, Score_Calc
 
 
-windd=Base_PingPong_Elements("pingpong", 500, 500)
+windd=Base_PingPong_Elements("pingpong", 800, 600, "w", "s", "up", "down", "c", "v")
 
 racket11=PingPong_Elements("player 1", 4, 0.5, 0, "square", "orange", (-380,0))
 racket22=PingPong_Elements("player 2", 4, 0.5, 0, "square", "orange", (380,0))
