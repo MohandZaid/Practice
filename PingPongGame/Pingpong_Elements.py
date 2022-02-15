@@ -38,48 +38,51 @@ class Base_PingPong_Elements:
         self=turtle.update()
 
 class PingPong_Elements(Base_PingPong_Elements):
-    def __init__(self, name, element_width, element_length,
+    def __init__(self, name, element_width, element_length, init_position=(0,0),
                 render_speed=0,element_shape="square", element_color="orange",
-                init_position=(0,0),element_steps=20, score=0):
+                element_steps=20, score=0):
         
         self.__name=name
         self.__element_width=element_width
         self.__element_length=element_length
+        self.__position=init_position
         self.__render_speed=render_speed
-        self.__element_shape=element_shape
-        self.__element_color=element_color
-        self.__init_position=init_position
+        self.__shape=element_shape
+        self.__color=element_color
+        
         self.__element_steps=element_steps
         self.__score=score
 
         self=turtle.Turtle()
+        self.goto(init_position) #set the position of the object
         self.speed(render_speed)
         self.shape(element_shape) #set the shape of the object
         self.color(element_color) #set the color of the object
         self.shapesize(stretch_wid=element_width,stretch_len=element_length) #stretch the shape size (default: wid=20pi*1 , len=20pi*1)
         self.penup() #stop object of drawing lines
-        self.goto(init_position) #set the position of the object
+
     
-    def get_ycore(self):
-        return turtle.ycor
-    def set_ycore(self,y):
-        self=turtle.sety(y)
+    ## moving UP and DOWN {SET} . {GET}
 
     def racket_up(self):
         y=self.get_ycore() #get the y coordinate of racket
-        y+=20 #set the new y after click by adding step
+        y+=self.__element_steps #set the new y after click by adding step
         self.set_ycore(y) #set the new y coordinate position 
 
     def racket_down(self):
         y=self.get_ycore()
-        y-=20
+        y-=self.__element_steps
         self.set_ycore(y)
+
+    ## Score {SET} . {GET}
 
     def get_score(self):
         return self.__score
 
-    def set_score(self):
-        self.__score+=1
+    def set_score(self, new_score):
+        self.__score+=new_score
+
+    ## Name {SET} . {GET}
 
     def get_name(self):
         return self.__name
@@ -87,20 +90,36 @@ class PingPong_Elements(Base_PingPong_Elements):
     def set_name(self, new_name):
         self.__name = new_name
 
-    def get_element_width(self):
+    ## Width , length {SET} . {GET}
+
+    def get_width(self):
         return self.__element_width
 
-    def get_element_length(self):
+    def get_length(self):
         return self.__element_length
 
+    def set_width(self, new_width):
+        self.__element_width=new_width
 
-    def get_element_xcore(self):
-            return turtle.xcor
+    def set_length(self, new_length):
+        self.__element_length=new_length
 
-    def get_element_ycore(self):
-        return turtle.ycor
+    ## X , Y Coordinates {SET} . {GET}
 
+    def get_xcore(self):
+        return turtle.xcor()
 
+    def get_ycore(self):
+        return turtle.ycor()
+
+    def set_xcore(self,x):
+        self=turtle.setx(x)
+
+    def set_ycore(self,y):
+        self=turtle.sety(y)
+
+    # def set_position(self, x, y):
+    #     self=turtle.goto(x, y)
 
 
 class PingPong_Ball(PingPong_Elements):
